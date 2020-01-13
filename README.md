@@ -1,3 +1,8 @@
+# React Redux Observable Boilerplate in Typescript
+<p align="center">
+  <img src="https://redux-observable.js.org/logo/logo-small.gif">
+</p>
+
 ## What is this?
 A very basic boilerplate for redux-observable and rxjs built on top of the typescript create react app. The redux portion follows the ducks proposal pattern.
 
