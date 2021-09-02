@@ -1,37 +1,22 @@
 import React from "react";
-import { connect } from "react-redux";
-import { startPing } from "../redux/ducks/ping";
+import { useDispatch, useSelector } from "react-redux";
+import { ActionsType, PingState } from "../redux/ducks/ping";
 
-interface IProps {
-  startPinging: () => void;
-  ping: {
-    isPinging: string
-  };
-}
+const PingButton: React.FC = () => {
+  const dispatch = useDispatch();
+  const state = useSelector((state: { ping: PingState}) => state);
 
-const PingButton: React.FC<IProps> = ({ startPinging, ping }) => {
   return (
     <div>
-      <button type="button" onClick={() => startPinging()}>
+      <button
+        type="button"
+        onClick={() => dispatch({ type: ActionsType.PING })}
+      >
         Begin Pinging
       </button>
-      <div>{ping.isPinging ? "IS PINGING" : ""}</div>
+      <div>{state.ping.isPinging ? "IS PINGING" : ""}</div>
     </div>
   );
 };
 
-const mapStateToProps = (state: any) => {
-  return {
-    ping: state.ping
-  };
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    startPinging: () => {
-      dispatch(startPing());
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PingButton);
+export default PingButton;

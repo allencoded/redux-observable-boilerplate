@@ -10,7 +10,6 @@ declare global {
   }
 }
 
-
 const epicMiddleware = createEpicMiddleware();
 
 // Enhancers are used in this case for the redux extension
